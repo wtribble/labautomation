@@ -52,23 +52,16 @@ device_list = []
 #extract data from json
 
 for item in device:
-    fam = ([item['family']])
-    strFam = ''.join(fam)
-    hostName = ([item['hostname']])
-    strHost = ''.join(hostName)
-    id = ([item["id"]])
-    strId = ''.join(id)
-    if strFam == "Routers" or strFam == 'Switches and Hubs':
+    if item['family'] == "Routers" or item['family'] == 'Switches and Hubs':
         print "**************************************"
-        print strHost,(","),strFam
+        print ('{}||{}'.format(item['hostname'],item['family']))
         print "**************************************"
         print "portName||ifIndex||adminStatus||ipv4Address||macAddress||vlanId||description"
-        url = "https://"+apicem_ip+"/api/v1/interface/network-device/%s" % strId
+        url = "https://"+apicem_ip+"/api/v1/interface/network-device/%s" % item['id']
         v = requests.get(url, headers=headers,verify=False)
         intResp_json = v.json()
-        int = intResp_json["response"]
         #print (json.dumps(int,indent=4))
         interface_list = []
    #     extract data from jso
-        for item in int:
+        for item in intResp_json["response"]:
             print ('{}||{}||{}||{}||{}||{}||{}'.format(item['portName'],item['ifIndex'],item['adminStatus'],item['ipv4Address'],item['macAddress'],item['vlanId'],item['description']))
