@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Netconf/.idea/Netconf.iml" filepath="$PROJECT_DIR$/../Netconf/.idea/Netconf.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/labautomation.iml" filepath="$PROJECT_DIR$/.idea/labautomation.iml" />
     </modules>
   </component>
