@@ -44,14 +44,11 @@ r = requests.get(get_url, headers=headers,verify=False)
 #print ("Request Status: ",resp.status_code)
 response_json = r.json()
 #print response_json
-device = response_json["response"]
 #uncomment for testing
 #print(json.dumps(device,indent=4))
-
 device_list = []
 #extract data from json
-
-for item in device:
+for item in response_json["response"]:
     if item['family'] == "Routers" or item['family'] == 'Switches and Hubs':
         print "**************************************"
         print ('{}||{}'.format(item['hostname'],item['family']))
