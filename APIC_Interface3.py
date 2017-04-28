@@ -50,6 +50,7 @@ device = response_json["response"]
 
 device_list = []
 #extract data from json
+
 for item in device:
     fam = ([item['family']])
     strFam = ''.join(fam)
@@ -57,28 +58,27 @@ for item in device:
     strHost = ''.join(hostName)
     id = ([item["id"]])
     strId = ''.join(id)
-    print "**************************************"
-    print strHost,(","),strFam
-    print "**************************************"
-    print "portName||ifIndex||adminStatus||ipv4Address||macAddress||vlanId||description"
-    url = "https://"+apicem_ip+"/api/v1/interface/network-device/%s" % strId
-    v = requests.get(url, headers=headers,verify=False)
-    intResp_json = v.json()
-    int = intResp_json["response"]
-    print (json.dumps(int,indent=4))
-    interface_list = []
-   # extract data from json
-    for item in int:
-        adminStatus = ([item['adminStatus']])
-        stradminStatus = ''.join(adminStatus)
-        portName = ([item['portName']])
-        strPort = ''.join(portName)
-        macAdd = ([item["macAddress"]])
-        desc = ([item["description"]])
-        ipv4Address = ([item['ipv4Address']])
-        ifIndex = ([item['ifIndex']])
-        vlanId = ([item['vlanId']])
-        print strPort, ("||"), ifIndex , ("||"), stradminStatus, ("||"), ipv4Address, ("||"), macAdd, ("||") , vlanId, ("||") , desc
-
-
+    if strFam == "Routers":
+        print "**************************************"
+        print strHost,(","),strFam
+        print "**************************************"
+        print "portName||ifIndex||adminStatus||ipv4Address||macAddress||vlanId||description"
+        url = "https://"+apicem_ip+"/api/v1/interface/network-device/%s" % strId
+        v = requests.get(url, headers=headers,verify=False)
+        intResp_json = v.json()
+        int = intResp_json["response"]
+        #print (json.dumps(int,indent=4))
+        interface_list = []
+   #     extract data from jso
+        for item in int:
+            adminStatus = ([item['adminStatus']])
+            stradminStatus = ''.join(adminStatus)
+            portName = ([item['portName']])
+            strPort = ''.join(portName)
+            macAdd = ([item["macAddress"]])
+            desc = ([item["description"]])
+            ipv4Address = ([item['ipv4Address']])
+            ifIndex = ([item['ifIndex']])
+            vlanId = ([item['vlanId']])
+            print strPort, ("||"), ifIndex , ("||"), stradminStatus, ("||"), ipv4Address, ("||"), macAdd, ("||") , vlanId, ("||") , desc
 
