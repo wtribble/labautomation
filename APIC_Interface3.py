@@ -58,7 +58,7 @@ for item in device:
     strHost = ''.join(hostName)
     id = ([item["id"]])
     strId = ''.join(id)
-    if strFam == "Routers":
+    if strFam == "Routers" or strFam == 'Switches and Hubs':
         print "**************************************"
         print strHost,(","),strFam
         print "**************************************"

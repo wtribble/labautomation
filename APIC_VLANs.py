@@ -48,9 +48,7 @@ device = response_json["response"]
 
 device_list = []
 #extract data from json
-i=0
 for item in device:
-    i+=1
     fam = ([item['family']])
     strFam = ''.join(fam)
     hostName = ([item['hostname']])
