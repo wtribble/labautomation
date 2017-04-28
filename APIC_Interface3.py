@@ -53,7 +53,9 @@ for item in response_json["response"]:
         print "********************************************************************************************"
         print ('{}||{}||{}||{}'.format(item['hostname'],item['type'],item['family'],item['serialNumber']))
         print "********************************************************************************************"
+        print "--------------------------------------------------------------------------------------------"
         print "portName||ifIndex||adminStatus||ipv4Address||macAddress||vlanId||description"
+        print "--------------------------------------------------------------------------------------------"
         url = "https://"+apicem_ip+"/api/v1/interface/network-device/%s" % item['id']
         v = requests.get(url, headers=headers,verify=False)
         intResp_json = v.json()
