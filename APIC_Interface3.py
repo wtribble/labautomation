@@ -71,14 +71,4 @@ for item in device:
         interface_list = []
    #     extract data from jso
         for item in int:
-            adminStatus = ([item['adminStatus']])
-            stradminStatus = ''.join(adminStatus)
-            portName = ([item['portName']])
-            strPort = ''.join(portName)
-            macAdd = ([item["macAddress"]])
-            desc = ([item["description"]])
-            ipv4Address = ([item['ipv4Address']])
-            ifIndex = ([item['ifIndex']])
-            vlanId = ([item['vlanId']])
-            print strPort, ("||"), ifIndex , ("||"), stradminStatus, ("||"), ipv4Address, ("||"), macAdd, ("||") , vlanId, ("||") , desc
-
+            print ('{}||{}||{}||{}||{}||{}||{}'.format(item['portName'],item['ifIndex'],item['adminStatus'],item['ipv4Address'],item['macAddress'],item['vlanId'],item['description']))
