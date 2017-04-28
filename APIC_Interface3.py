@@ -9,9 +9,9 @@ import json
 requests.packages.urllib3.disable_warnings() # Disable warnings
 
 # APIC-EM IP, modify these parameters if you are using your own APIC-EM
-apicem_ip = "apic-em.fullyqualifiedORip.com"
-username = "admin"
-password = "cisco"
+apicem_ip = "sandboxapic.cisco.com"
+username = "devnetuser"
+password = "Cisco123!"
 version = "v1"
 
 # JSONhttps://sandboxapic.cisco.com/ input
@@ -29,7 +29,7 @@ headers = {'content-type': 'application/json'}
 
 # Make request and get response - "resp" is the response of this request
 resp = requests.post(post_url, json.dumps(r_json), headers=headers,verify=False)
-#print ("Request Status: ",resp.status_code)
+print ("Request Status: ",resp.status_code)
 
 #store ticket in a variable
 x_auth_token = resp.json()["response"]["serviceTicket"]
@@ -38,20 +38,19 @@ x_auth_token = resp.json()["response"]["serviceTicket"]
 headers = {"X-Auth-Token": x_auth_token}
 #print headers
 
+get_url = "https://"+apicem_ip+"/api/v1/network-device"
 #
-r = requests.get('https://apic-em.bhmlab.ciscolabs.com/api/v1/network-device', headers=headers,verify=False)
+r = requests.get(get_url, headers=headers,verify=False)
 #print ("Request Status: ",resp.status_code)
 response_json = r.json()
-#print response_json
+print response_json
 device = response_json["response"]
 #uncomment for testing
 #print(json.dumps(device,indent=4))
 
 device_list = []
 #extract data from json
-i=0
 for item in device:
-    i+=1
     fam = ([item['family']])
     strFam = ''.join(fam)
     hostName = ([item['hostname']])
