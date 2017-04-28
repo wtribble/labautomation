@@ -66,8 +66,8 @@ for item in device:
         'device_type': 'cisco_ios',
         'ip': '%s' %strIP,
         'username': 'admin',
-        'password': 'C1sc0',
-        'secret' : 'C1sc0',
+        'password': 'cisco',
+        'secret' : 'cisco',
         }
 
     #connect to the device
