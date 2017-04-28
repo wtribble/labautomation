@@ -13,7 +13,7 @@ username = "admin"
 password = "cisco"
 version = "v1"
 
-# JSONhttps://sandboxapic.cisco.com/ input
+# setting username and password
 r_json = {
     "username": username,
     "password": password
