@@ -50,9 +50,9 @@ device_list = []
 #extract data from json
 for item in response_json["response"]:
     if item['family'] == "Routers" or item['family'] == 'Switches and Hubs':
-        print "**************************************"
+        print "********************************************************************************************"
         print ('{}||{}||{}||{}'.format(item['hostname'],item['type'],item['family'],item['serialNumber']))
-        print "**************************************"
+        print "********************************************************************************************"
         print "portName||ifIndex||adminStatus||ipv4Address||macAddress||vlanId||description"
         url = "https://"+apicem_ip+"/api/v1/interface/network-device/%s" % item['id']
         v = requests.get(url, headers=headers,verify=False)
