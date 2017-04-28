@@ -61,7 +61,7 @@ for item in device:
     print "**************************************"
     print strHost,(","),strIP,(","),strFam
     print "**************************************"
-    #define netmiko connection handler with IP address entry from our APIC Device Inventory
+    #define netmiko connection handler with IP address entry from our APIC Device Inventory.
     cisco_CSR = {
         'device_type': 'cisco_ios',
         'ip': '%s' %strIP,
