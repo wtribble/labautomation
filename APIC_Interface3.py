@@ -43,7 +43,7 @@ get_url = "https://"+apicem_ip+"/api/v1/network-device"
 r = requests.get(get_url, headers=headers,verify=False)
 #print ("Request Status: ",resp.status_code)
 response_json = r.json()
-print response_json
+#print response_json
 device = response_json["response"]
 #uncomment for testing
 #print(json.dumps(device,indent=4))
@@ -61,13 +61,13 @@ for item in device:
     print strHost,(","),strFam
     print "**************************************"
     print "portName||ifIndex||adminStatus||ipv4Address||macAddress||vlanId||description"
-    url = 'https://apic-em.bhmlab.ciscolabs.com/api/v1/interface/network-device/%s' % strId
+    url = "https://"+apicem_ip+"/api/v1/interface/network-device/%s" % strId
     v = requests.get(url, headers=headers,verify=False)
     intResp_json = v.json()
     int = intResp_json["response"]
-    #print (json.dumps(int,indent=4))
+    print (json.dumps(int,indent=4))
     interface_list = []
-    # extract data from json
+   # extract data from json
     for item in int:
         adminStatus = ([item['adminStatus']])
         stradminStatus = ''.join(adminStatus)
